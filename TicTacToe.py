@@ -44,7 +44,12 @@ def won():
 
 # Function för att kolla om det blir lika
 def tie():
-    return False
+    for row in board:
+        for cell in row:
+            if "-" in cell:
+                return False
+
+    return True
 
 
 # Hela spelet
@@ -57,11 +62,10 @@ def game(player_turn):
         row = input("Select row: ")
         vertical = input("Select a vertical row: ")
 
-        if row and vertical != "x" or "o":
-            row = int(row) - 1
-            vertical = int(vertical) - 1
+        row = int(row) - 1
+        vertical = int(vertical) - 1
 
-            board[row][vertical] = player_turn
+        board[row][vertical] = player_turn
 
         print_board(board)
 
